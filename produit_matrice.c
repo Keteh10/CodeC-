@@ -81,7 +81,7 @@ int main(int argc, char **argv)
         sum = 0;
         }
 
-  MPI_Gather(c_ligne, N*N/size, MPI_INT, c, N*N/size, MPI_INT, 0, MPI_COMM_WORLD);
+  MPI_Gather(c_ligne, N*N/size, MPI_INT, c, N*N, MPI_INT, 0, MPI_COMM_WORLD);
 
 
   MPI_Finalize();
