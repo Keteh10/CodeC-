@@ -21,7 +21,7 @@
 /* global to avoid stack overflow */
 float a[N][N],b[N][N],c[N][N];
 
-int main()
+int main(int argc, char **argv)
 {
   struct timeval tv_init, tv_begin, tv_end;
     gettimeofday( &tv_init, NULL);
@@ -31,9 +31,9 @@ int main()
     
   srand((unsigned int)time(NULL));
     
-#float a_colonne[N],
+//float a_colonne[N],
   float a_ligne[N];
-#float b_colonne[N], b_ligne[N];
+//float b_colonne[N], b_ligne[N];
   float c_ligne[N];
   float sum;
   int size, rank;
