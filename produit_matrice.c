@@ -32,9 +32,9 @@ int main(int argc, char **argv)
   srand((unsigned int)time(NULL));
     
 //float a_colonne[N],
-  float a_ligne[N];
+  float *a_ligne;
 //float b_colonne[N], b_ligne[N];
-  float c_ligne[N];
+  float *c_ligne;
   float sum;
   int size, rank;
   int i,j = 0;
