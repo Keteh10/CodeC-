@@ -31,18 +31,19 @@ int main(int argc, char **argv)
     
   srand((unsigned int)time(NULL));
     
-//float a_colonne[N],
-  float *a_ligne;
-//float b_colonne[N], b_ligne[N];
-  float *c_ligne;
+
   float sum;
   int size, rank;
   int i,j = 0;
     
+    
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
-    
+  //float a_colonne[N],
+  float a_ligne[N*N/size];
+  //float b_colonne[N], b_ligne[N];
+  float c_ligne[N*N/size];
   
   for (int i=0;i<N;i++)
     for (int j=0;j<N;j++)
