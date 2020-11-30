@@ -3,7 +3,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <math.h>
-#inlude <mpi.h>
+#include <mpi.h>
 
 /* matrix size */
 #define N 2500
@@ -31,11 +31,13 @@ int main()
     
   srand((unsigned int)time(NULL));
     
-  float a_colonne[N], a_ligne[N];
-  float b_colonne[N], b_ligne[N];
+#float a_colonne[N],
+  float a_ligne[N];
+#float b_colonne[N], b_ligne[N];
   float c_ligne[N];
   float sum;
   int size, rank;
+  int i,j = 0;
     
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
