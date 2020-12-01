@@ -24,7 +24,11 @@ int main(int argc,char **argv)
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
-  int tab2[SIZE/size];
+  int compteur2[SIZE/size];
+  
+    for(int i=0; i<SIZE/size; i++){
+        compteur2[i]=0;
+    }
 
   /* met des valeurs arbitraires dans le tableau : */
   for(int i=0 ; i<SIZE ; i++)
@@ -41,17 +45,17 @@ int main(int argc,char **argv)
      C'est ceci qu'il faut paralléliser en priorité. */
     
     
-  MPI_Scatter(tableau, SIZE/size, MPI_INT, tab2, SIZE/size, MPI_INT, 0, MPI_COMM_WORLD);
+  //MPI_Scatter(tableau, SIZE/size, MPI_INT, tab2, SIZE/size, MPI_INT, 0, MPI_COMM_WORLD);
     
   for(int i=0 ; i<SIZE/size ; i++)
   {
     for(int n=0 ; n<SIZE/size ; n++)
-      if(tab2[n] < tab2[i])
-        compteur[i]++;
+      if(tableau[rank*(SIZE/size)+n] < tableau[rank*(SIZE/size)+i])
+        compteur2[i]++;
   }
 
 
-  MPI_Gather(tab2, SIZE/size, MPI_INT, tableau, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
+//  MPI_Gather(tab2, SIZE/size, MPI_INT, tableau, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
     
   MPI_Finalize();
     
