@@ -32,6 +32,7 @@ int ma_somme_globale(int *sendbuf, int *recvbuf){
         recvbuf = sum;
         MPI_Send(recvbuf, SIZE, MPI_INT,0,i,MPI_COMM_WORLD);
     }
+    MPI_Finalize();
     return (sum);
 }
 
