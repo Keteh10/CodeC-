@@ -57,7 +57,7 @@ int main(int argc,char **argv)
 
 //  MPI_Gather(tab2, SIZE/size, MPI_INT, tableau, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
     
-  MPI_Finalize();
+
     
   /* crée le tableau résultat (complexité : SIZE).
      Inutile de paralléliser ceci. */
@@ -70,9 +70,9 @@ int main(int argc,char **argv)
     /* cette boucle se place sur le premier élément qui n'est pas encore à
        la bonne valeur (pas 0) */
     for(d=0 ; ; d++)
-      if(resultat[compteur[i]+d] != tableau[i])
+      if(resultat[rank*compteur2[i]+d] != tableau[i])
         break;
-    resultat[compteur[i]+d] = tableau[i];
+    resultat[rank*compteur2[i]+d] = tableau[i];
   }
 
 
@@ -80,5 +80,7 @@ int main(int argc,char **argv)
      de SIZE) */
   affiche(resultat);
 
+  MPI_Finalize();
+    
   return(0);
 }
