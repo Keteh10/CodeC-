@@ -11,17 +11,17 @@ int ma_somme_globale(int *sendbuf, int *recvbuf){
     
     int sum = 0;
     
-    for (rank=0){
+    for (&rank=0){
         sum = sendbuf;
     }
     
-    for (int i=0; i<size; i++){
+    for (int i=0; i<&size; i++){
         MPI_Send(sendbuf, SIZE, MPI_INT, i, 0, MPI_COMM_WORLD);
         MPI_Recv(recvbuf, SIZE, MPI_INT, i ,0, MPI_COMM_WORLD);
         sum = sum + sendbuf;
     }
     
-    for (int i=0; i<size; i++){
+    for (int i=0; i<&size; i++){
         recvbuf = sum;
         MPI_Send(recvbuf, SIZE, MPI_INT,0,i,MPI_COMM_WORLD);
     }

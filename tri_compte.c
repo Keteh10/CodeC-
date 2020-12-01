@@ -26,6 +26,8 @@ int main(int argc,char **argv)
   MPI_Comm_size(MPI_COMM_WORLD, &size);
   int compteur2[SIZE/size];
   
+  
+// On crée un compteur pour chaque partie de tableau de taille SIZE/size 
     for(int i=0; i<SIZE/size; i++){
         compteur2[i]=0;
     }
@@ -45,8 +47,6 @@ int main(int argc,char **argv)
      C'est ceci qu'il faut paralléliser en priorité. */
     
     
-  //MPI_Scatter(tableau, SIZE/size, MPI_INT, tab2, SIZE/size, MPI_INT, 0, MPI_COMM_WORLD);
-    
   for(int i=0 ; i<SIZE/size ; i++)
   {
     for(int n=0 ; n<SIZE/size ; n++)
@@ -54,10 +54,7 @@ int main(int argc,char **argv)
         compteur2[i]++;
   }
 
-
-//  MPI_Gather(tab2, SIZE/size, MPI_INT, tableau, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
     
-
     
   /* crée le tableau résultat (complexité : SIZE).
      Inutile de paralléliser ceci. */
@@ -70,9 +67,9 @@ int main(int argc,char **argv)
     /* cette boucle se place sur le premier élément qui n'est pas encore à
        la bonne valeur (pas 0) */
     for(d=0 ; ; d++)
-      if(resultat[rank*compteur2[i]+d] != tableau[i])
+      if(resultat[compteur[i]+d] != tableau[i])
         break;
-    resultat[rank*compteur2[i]+d] = tableau[i];
+    resultat[compteur[i]+d] = tableau[i];
   }
 
 
@@ -81,6 +78,5 @@ int main(int argc,char **argv)
   affiche(resultat);
 
   MPI_Finalize();
-    
   return(0);
 }
