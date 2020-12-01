@@ -20,6 +20,11 @@ int size, rank;
 int main(int argc,char **argv)
 {
   srand(time(NULL));
+    
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+  int tab2[SIZE/size];
 
   /* met des valeurs arbitraires dans le tableau : */
   for(int i=0 ; i<SIZE ; i++)
@@ -30,9 +35,7 @@ int main(int argc,char **argv)
   affiche(tableau);
     
     
-  MPI_Init(&argc, &argv);
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-  MPI_Comm_size(MPI_COMM_WORLD, &size);
+
 
 
   /* compte le nombre de valeurs inférieures à chaque nombre du tableau
