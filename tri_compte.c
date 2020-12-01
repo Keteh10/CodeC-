@@ -34,8 +34,6 @@ int main(int argc,char **argv)
      de SIZE) */
   affiche(tableau);
     
-    
-
 
 
   /* compte le nombre de valeurs inférieures à chaque nombre du tableau
@@ -45,10 +43,10 @@ int main(int argc,char **argv)
     
   MPI_Scatter(tableau, SIZE/size, MPI_INT, tab2, SIZE/size, MPI_INT, 0, MPI_COMM_WORLD);
     
-  for(int i=0 ; i<SIZE ; i++)
+  for(int i=0 ; i<SIZE/size ; i++)
   {
-    for(int n=0 ; n<SIZE ; n++)
-      if(tableau[n] < tableau[i])
+    for(int n=0 ; n<SIZE/size ; n++)
+      if(tab2[n] < tab2[i])
         compteur[i]++;
   }
 
