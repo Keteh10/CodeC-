@@ -27,7 +27,7 @@ int main(int argc,char **argv)
   int compteur2[SIZE/size];
   
   
-// On crée un compteur pour chaque partie de tableau de taille SIZE/size 
+// On crée un compteur pour chaque partie de tableau de taille SIZE/size
     for(int i=0; i<SIZE/size; i++){
         compteur2[i]=0;
     }
@@ -54,7 +54,7 @@ int main(int argc,char **argv)
         compteur2[i]++;
   }
 
-    
+  MPI_Finalize();
     
   /* crée le tableau résultat (complexité : SIZE).
      Inutile de paralléliser ceci. */
@@ -77,6 +77,6 @@ int main(int argc,char **argv)
      de SIZE) */
   affiche(resultat);
 
-  MPI_Finalize();
+
   return(0);
 }

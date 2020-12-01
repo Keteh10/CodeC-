@@ -22,11 +22,13 @@ int ma_somme_globale(int *sendbuf, int *recvbuf){
     }
     
     for (int i=0; i<&size; i++){
-        recvbuf = sum;
+        *recvbuf = sum;
         MPI_Send(recvbuf, SIZE, MPI_INT,0,i,MPI_COMM_WORLD);
     }
     return (sum);
 }
+
+
 
 int main(int argc, char **argv){
     
