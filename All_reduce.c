@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <mpi.h>
 
-#DEFINE SIZE 1
+#define SIZE 1
 
 
 int sendto = 2;
 
-int ma_somme_globale(int *sendbuf, int *recvbuf)
+int ma_somme_globale(int *sendbuf, int *recvbuf);
 
 int ma_somme_globale(int *sendbuf, int *recvbuf){
     
@@ -17,8 +17,9 @@ int ma_somme_globale(int *sendbuf, int *recvbuf){
         sum = sendbuf;
     }
     
-    for (int i=0; i<size; i++)©
+    for (int i=0; i<size; i++){
         MPI_Send(sendbuf, SIZE, MPI_INT, i, 0, MPI_COMM_WORLD);
+        MPI_Recv(recvbuf, SIZE, MPI_INT, i ,0, MPI_COMM_WORLD);
         sum += sendbuf;
     }
     
@@ -42,6 +43,6 @@ int main(int argc, char **argv){
     
     sum1 = ma_somme_globale(tab, tab2);
     MPI_Allreduce(tab, tab2, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-    MPI_Finalize(); 
+    MPI_Finalize();
     
 }
