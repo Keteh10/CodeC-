@@ -143,9 +143,9 @@ def affichage(filename,orbit_nb):
 # 	E=[]
 # 	for j in range(len(DT)):
 # 		integre(func,pot,W0,n,DT[j],1)
-# 		f=open("D:\\Documents\\TPS\\3A\\Simulations numériques\\CoordVector.txt","r")
+# 		f=open("D:\\Documents\\TPS\\3A\\Simulations numeriques\\CoordVector.txt","r")
 # 		lu=f.readline
-# 		W=np.loadtxt("D:\\Documents\\TPS\\3A\\Simulations numériques\\CoordVector.txt")
+# 		W=np.loadtxt("D:\\Documents\\TPS\\3A\\Simulations numeriques\\CoordVector.txt")
 # 		X,Y,Vx,Vy=[],[],[],[]
 # 		i=0
 # 		while(i*4+3<=len(W)):
@@ -228,7 +228,7 @@ def goHenonHeiles(E,nb_orbit):
     W0=[np.array([x0[i],0.,0.,vy[i]]) for i in range(len(x0))]
     integre(RK4,HenonHeiles,W0,50000,0.1,nb_orbit)
     end_integre = time.time()
-	#end_affichage=affichage("D:\\Documents\\TPS\\3A\\Simulations numériques\\CoordVector.txt")
+	#end_affichage=affichage("D:\\Documents\\TPS\\3A\\Simulations numeriques\\CoordVector.txt")
     end_affichage=PoincareSection(".\CoordVector.txt")
     print("Integration time in s = ", end_integre - start)
 	#print("Displaying time in s = ", end_affichage - end_integre) #change return value of PoincareSection by t_affichage
@@ -268,7 +268,7 @@ def orbite_reguliere_ou_pas(E):
     lnDelta_W=[np.log(Delta_W[i]) for i in range(len(Delta_W))]
     x=[i for i in range(len(lnDelta_W))]
     a,b,r,p_value, std_err=linregress(x,lnDelta_W)
-    if(r**2>0.95): #à vérifier, suffisant ou pas ? linéaire si Delta_W exponentiel donc si chaotique
+    if(r**2>0.95): #a verifier, suffisant ou pas ? lineaire si Delta_W exponentiel donc si chaotique
         res=0
     else:
         res=1
