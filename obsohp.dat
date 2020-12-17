@@ -1,0 +1,13 @@
+# Observatory Parameters.
+#
+# Some were taken from the Almanac and others have been submitted.
+# Observatories wishing to be added or make changes in the default
+# distributed database should send information to iraf@noao.edu.
+
+observatory = "ohp"
+	name = "Observatoire de Haute Provence"
+	longitude = 5:42.73
+	latitude = 43:55.90
+	altitude = 650.
+	timezone = 1
+
